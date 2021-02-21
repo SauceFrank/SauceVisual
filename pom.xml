@@ -40,7 +40,7 @@
         <dependency>
             <groupId>com.saucelabs</groupId>
             <artifactId>sauce_testng</artifactId>
-            <version>2.1.23</version>
+            <version>2.1.25</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -59,10 +59,10 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.0</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -80,7 +80,7 @@
    					           <suiteXmlFile>testng.xml</suiteXmlFile>
 		              </suiteXmlFiles>
               	  <parallel>classes</parallel>
-                  <threadCount>1000</threadCount>
+                  <threadCount>100</threadCount>
       			      <testFailureIgnore>true</testFailureIgnore>
                       <redirectTestOutputToFile>false</redirectTestOutputToFile>
                 </configuration>
