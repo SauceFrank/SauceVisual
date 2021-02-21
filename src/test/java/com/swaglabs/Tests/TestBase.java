@@ -61,13 +61,13 @@ public class TestBase {
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
 
-            new Object[]{"firefox", "84", "Windows 10"},
-//            new Object[]{"firefox", "latest-1", "Windows 10"},
-//            new Object[]{"firefox", "latest-2", "Windows 10"},
+            new Object[]{"firefox", "latest", "Windows 10"},
+            new Object[]{"firefox", "latest-1", "Windows 10"},
+            new Object[]{"firefox", "latest-2", "Windows 10"},
 
-            new Object[]{"chrome", "87", "Windows 10"},
-//            new Object[]{"chrome", "latest-1", "Windows 10"},
-//            new Object[]{"chrome", "latest-2", "Windows 10"},
+            new Object[]{"chrome", "latest", "Windows 10"},
+            new Object[]{"chrome", "latest-1", "Windows 10"},
+            new Object[]{"chrome", "latest-2", "Windows 10"},
 
 //            new Object[]{"chrome", "latest", "Windows 10"},
 //            new Object[]{"chrome", "latest-1", "Windows 10"},
@@ -75,16 +75,16 @@ public class TestBase {
 
 
                 // Mac OS
-//            new Object[]{"safari", "latest", "macOS 10.15"},
-//            new Object[]{"safari", "13.0", "macOS 10.15"},
+            new Object[]{"safari", "latest", "macOS 10.15"},
+            new Object[]{"safari", "13.0", "macOS 10.15"},
 //            new Object[]{"safari", "latest-2", "macOS 10.11"},
 
 //            new Object[]{"safari", "latest", "macOS 10.14"},
 //            new Object[]{"safari", "12.0", "macOS 10.14"},
 
-//                new Object[]{"chrome", "latest", "macOS 10.15"},
-//                new Object[]{"chrome", "latest-1", "macOS 10.15"},
-//                new Object[]{"chrome", "latest-2", "macOS 10.15"},
+                new Object[]{"chrome", "latest", "macOS 10.15"},
+                new Object[]{"chrome", "latest-1", "macOS 10.15"},
+                new Object[]{"chrome", "latest-2", "macOS 10.15"},
 
 //            new Object[]{"chrome", "latest", "macOS 10.14"},
 //            new Object[]{"chrome", "latest-1", "macOS 10.14"},
