@@ -67,7 +67,7 @@ public class TestBase {
 
             new Object[]{"chrome", "latest", "Windows 10"},
             new Object[]{"chrome", "latest-1", "Windows 10"},
-            new Object[]{"chrome", "latest-2", "Windows 10"},
+//            new Object[]{"chrome", "latest-2", "Windows 10"},
 
 //            new Object[]{"chrome", "latest", "Windows 10"},
 //            new Object[]{"chrome", "latest-1", "Windows 10"},
@@ -84,7 +84,7 @@ public class TestBase {
 
                 new Object[]{"chrome", "latest", "macOS 10.15"},
                 new Object[]{"chrome", "latest-1", "macOS 10.15"},
-                new Object[]{"chrome", "latest-2", "macOS 10.15"},
+//                new Object[]{"chrome", "latest-2", "macOS 10.15"},
 
 //            new Object[]{"chrome", "latest", "macOS 10.14"},
 //            new Object[]{"chrome", "latest-1", "macOS 10.14"},
@@ -167,32 +167,31 @@ public class TestBase {
         capabilities.setCapability(CapabilityType.PLATFORM_NAME, os);
 
 
-        MutableCapabilities sauceVisual = new MutableCapabilities();
-        sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
-        sauceVisual.setCapability("projectName", "my-project-largeScreen");
-        sauceVisual.setCapability("viewportSize", "1920x1080");
-
-        capabilities.setCapability("sauce:visual", sauceVisual);
+//        MutableCapabilities sauceVisual = new MutableCapabilities();
+//        sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
+//        sauceVisual.setCapability("projectName", "my-project-largeScreen");
+//        sauceVisual.setCapability("viewportSize", "1920x1080");
+//
+//        capabilities.setCapability("sauce:visual", sauceVisual);
 
         MutableCapabilities sauce = new MutableCapabilities();
         sauce.setCapability("username", username);
         sauce.setCapability("accessKey", accesskey);
         sauce.setCapability("name", methodName + " password logging disabled");
+        sauce.setCapability("extendedDebugging",true);
+        sauce.setCapability("capturePerformance",true);
+
+        //Getting the build name.
+        // Using the Jenkins ENV var or Github Action ENV var. You can use your own. If it is not set test will run without a build id.
+
         if (buildTag != null) {
             sauce.setCapability("build", buildTag);
         } else if (githubBuildTag != null) {
             sauce.setCapability("build", githubBuildTag);
+        } else {
+            sauce.setCapability("build", "no build found");
         }
         capabilities.setCapability("sauce:options", sauce);
-
-
-        //Getting the build name.
-        // Using the Jenkins ENV var or Github Action ENV var. You can use your own. If it is not set test will run without a build id.
-        if (buildTag != null) {
-            capabilities.setCapability("build", buildTag);
-        } else if (githubBuildTag != null) {
-            capabilities.setCapability("build", githubBuildTag);
-        }
 
         System.out.println(capabilities);
 
@@ -200,7 +199,6 @@ public class TestBase {
         webDriver.set(new RemoteWebDriver(
                         new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
 //                        new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
-
                         capabilities)
         );
 
