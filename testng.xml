@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-  <test thread-count="1000" name="Test" parallel="methods">
+  <test thread-count="8" name="Test" parallel="classes">
 <!--  <test name="Test">-->
     <classes>
       <class name="com.swaglabs.Tests.LoginInvalidUser"/>

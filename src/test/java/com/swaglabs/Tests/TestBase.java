@@ -62,12 +62,17 @@ public class TestBase {
         return new Object[][]{
 
             new Object[]{"firefox", "latest", "Windows 10"},
-            new Object[]{"firefox", "latest-1", "Windows 10"},
-            new Object[]{"firefox", "latest-2", "Windows 10"},
+//            new Object[]{"firefox", "latest-1", "Windows 10"},
+//            new Object[]{"firefox", "latest-2", "Windows 10"},
 
             new Object[]{"chrome", "latest", "Windows 10"},
-            new Object[]{"chrome", "latest-1", "Windows 10"},
+//            new Object[]{"chrome", "latest-1", "Windows 10"},
 //            new Object[]{"chrome", "latest-2", "Windows 10"},
+
+//            new Object[]{"MicrosoftEdge", "latest", "Windows 10"},
+//            new Object[]{"MicrosoftEdge", "latest-1", "Windows 10"},
+//            new Object[]{"MicrosoftEdge", "latest-2", "Windows 10"},
+
 
 //            new Object[]{"chrome", "latest", "Windows 10"},
 //            new Object[]{"chrome", "latest-1", "Windows 10"},
@@ -75,15 +80,15 @@ public class TestBase {
 
 
                 // Mac OS
-            new Object[]{"safari", "latest", "macOS 10.15"},
-            new Object[]{"safari", "13.0", "macOS 10.15"},
+//            new Object[]{"safari", "latest", "macOS 10.15"},
+//            new Object[]{"safari", "13.0", "macOS 10.15"},
 //            new Object[]{"safari", "latest-2", "macOS 10.11"},
 
 //            new Object[]{"safari", "latest", "macOS 10.14"},
 //            new Object[]{"safari", "12.0", "macOS 10.14"},
 
-                new Object[]{"chrome", "latest", "macOS 10.15"},
-                new Object[]{"chrome", "latest-1", "macOS 10.15"},
+//                new Object[]{"chrome", "latest", "macOS 10.15"},
+//                new Object[]{"chrome", "latest-1", "macOS 10.15"},
 //                new Object[]{"chrome", "latest-2", "macOS 10.15"},
 
 //            new Object[]{"chrome", "latest", "macOS 10.14"},
@@ -167,19 +172,21 @@ public class TestBase {
         capabilities.setCapability(CapabilityType.PLATFORM_NAME, os);
 
 
-//        MutableCapabilities sauceVisual = new MutableCapabilities();
-//        sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
-//        sauceVisual.setCapability("projectName", "my-project-largeScreen");
-//        sauceVisual.setCapability("viewportSize", "1920x1080");
-//
-//        capabilities.setCapability("sauce:visual", sauceVisual);
+        MutableCapabilities sauceVisual = new MutableCapabilities();
+        sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
+        sauceVisual.setCapability("projectName", "my-project-largeScreen");
+        sauceVisual.setCapability("viewportSize", "1920x1080");
+
+        capabilities.setCapability("sauce:visual", sauceVisual);
 
         MutableCapabilities sauce = new MutableCapabilities();
         sauce.setCapability("username", username);
         sauce.setCapability("accessKey", accesskey);
         sauce.setCapability("name", methodName + " password logging disabled");
-        sauce.setCapability("extendedDebugging",true);
-        sauce.setCapability("capturePerformance",true);
+//        sauce.setCapability("extendedDebugging",true);
+//        sauce.setCapability("capturePerformance",true);
+
+        sauce.setCapability("commandTimeout", 600);
 
         //Getting the build name.
         // Using the Jenkins ENV var or Github Action ENV var. You can use your own. If it is not set test will run without a build id.
@@ -197,8 +204,8 @@ public class TestBase {
 
         // Launch remote browser and set it as the current thread
         webDriver.set(new RemoteWebDriver(
-                        new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
-//                        new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
+//                        new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
+                        new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
                         capabilities)
         );
 

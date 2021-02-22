@@ -8,28 +8,29 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class InventoryPage {
 
-    @FindBy(xpath = "//div[@class='product_label']")
+    @FindBy(className = "product_label")
     private WebElement productInventory;  
 
-    @FindBy(xpath = "//div//div[@class='inventory_list']//div[1]//div[3]//button[1]")
+    @FindBy(css = "#inventory_container > div > div:nth-child(1) > div.pricebar > button")
     private WebElement addToCartBackpackButton;
     
-    @FindBy(xpath = "//div//div[@class='inventory_list']//div[3]//div[3]//button[1]")
+    @FindBy(css = "#inventory_container > div > div:nth-child(3) > div.pricebar > button")
     private WebElement addToCartBoltTshirtButton;  
     
-    @FindBy(xpath = "//div//div[@class='inventory_list']//div[5]//div[3]//button[1]")
+    @FindBy(css = "#inventory_container > div > div:nth-child(5) > div.pricebar > button")
     private WebElement addToCartOnesieButton;  
     
     @FindBy(xpath = "//div//div[@class='inventory_list']//div[6]//div[3]//button[1]")
     private WebElement addToCartTshirtRedButton;
     
-    @FindBy(xpath = "//div//div[@class='inventory_list']//div[4]//div[3]//button[1]")
+    @FindBy(css = "#inventory_container > div > div:nth-child(4) > div.pricebar > button")
     private WebElement addToCartFleeceJacketButton;
     
     @FindBy(xpath = "//div//div[@class='inventory_list']//div[2]//div[3]//button[1]")
     private WebElement addToCartBikeLightButton;
     
     @FindBy(xpath = "//*[contains(@class,'svg-inline--fa fa-shopping-cart fa-w-18 fa-3x')]")
+//    @FindBy(css = "#shopping_cart_container > a > svg > path")
     private WebElement cartIcon;
     
     @FindBy(xpath = "//a[@id='logout_sidebar_link']")

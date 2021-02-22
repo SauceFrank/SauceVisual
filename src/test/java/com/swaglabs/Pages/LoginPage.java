@@ -29,8 +29,8 @@ public class LoginPage {
 
 
     public WebDriver driver;
-    public static String url = "https://www.saucedemo.com/";
-//    public static String url = "https://24103f7ba9e3.ngrok.io/";
+//    public static String url = "https://www.saucedemo.com/";
+    public static String url = "https://swaglabs.herokuapp.com/";
 
     public static LoginPage visitPage(WebDriver driver) {
     	LoginPage page = new LoginPage(driver);

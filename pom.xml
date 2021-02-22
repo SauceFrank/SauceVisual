@@ -80,7 +80,7 @@
    					           <suiteXmlFile>testng.xml</suiteXmlFile>
 		              </suiteXmlFiles>
               	  <parallel>classes</parallel>
-                  <threadCount>100</threadCount>
+                  <threadCount>8</threadCount>
       			      <testFailureIgnore>true</testFailureIgnore>
                       <redirectTestOutputToFile>false</redirectTestOutputToFile>
                 </configuration>
