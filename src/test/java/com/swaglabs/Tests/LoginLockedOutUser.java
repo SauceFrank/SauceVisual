@@ -1,5 +1,6 @@
 package com.swaglabs.Tests;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.InvalidElementStateException;
@@ -29,6 +30,9 @@ public class LoginLockedOutUser extends TestBase {
         //create webdriver session
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("/*@visual.init*/", "LoginLockedOutUser");
+
 
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   	    // driver.manage().window().maximize();
@@ -41,6 +45,7 @@ public class LoginLockedOutUser extends TestBase {
 
         this.annotate("Verify Locked Out User Message...");
         AssertJUnit.assertTrue(page.verifyLockedOutMessage().contains("Epic sadface"));
+        js.executeScript("/*@visual.snapshot*/", "verify login error");
 
     }
 

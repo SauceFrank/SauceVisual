@@ -1,5 +1,6 @@
 package com.swaglabs.Tests;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.InvalidElementStateException;
@@ -29,6 +30,9 @@ public class LoginLogoutStandardUser extends TestBase {
         //create webdriver session
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("/*@visual.init*/", "LoginLogout");
+
 
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   	    // driver.manage().window().maximize();
@@ -46,10 +50,12 @@ public class LoginLogoutStandardUser extends TestBase {
 
         this.annotate("View Product Inventory...");
         AssertJUnit.assertTrue(inventory.viewInventory().contains("Products"));
+        js.executeScript("/*@visual.snapshot*/", "verify successful login");
 
         this.annotate("Logging Out...");
         inventory.clickMenuButton();
         inventory.clickLogout();
+        js.executeScript("/*@visual.snapshot*/", "verify successful logout");
 
 
 

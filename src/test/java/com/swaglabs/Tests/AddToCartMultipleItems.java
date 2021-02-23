@@ -39,14 +39,12 @@ public class AddToCartMultipleItems extends TestBase {
 
         this.annotate("Visiting Swag Labs Login page...");
         LoginPage page = LoginPage.visitPage(driver);
-        js.executeScript("/*@visual.snapshot*/", "Home");
 
         this.annotate("Greet Sign In To Swag Labs Page...");
         InventoryPage inventory = page.enterCredentials("performance_glitch_user", "secret_sauce");
 
         this.annotate("View Product Inventory...");
         AssertJUnit.assertTrue(inventory.viewInventory().contains("Products"));
-        js.executeScript("/*@visual.snapshot*/", "view products");
 
         this.annotate("Add To Cart Backpack...");
         inventory.clickAddToCartBackpack();

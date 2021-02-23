@@ -39,7 +39,6 @@ public class AddToCartSingleItem extends TestBase {
 
         this.annotate("Visiting Swag Labs Login page...");
         LoginPage loginPage = LoginPage.visitPage(driver);
-        js.executeScript("/*@visual.snapshot*/", "Home");
 
         this.annotate("Greet Sign In To Swag Labs Page...");
         InventoryPage inventoryPage = loginPage.enterCredentials("performance_glitch_user", "secret_sauce");

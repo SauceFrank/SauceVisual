@@ -1,5 +1,6 @@
 package com.swaglabs.Tests;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.InvalidElementStateException;
@@ -33,9 +34,12 @@ public class CompleteOrder extends TestBase {
         //create webdriver session
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("/*@visual.init*/", "CompleteOrder");
+
 
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-  	    // driver.manage().window().maximize();
+        // driver.manage().window().maximize();
 
         this.annotate("Visiting Swag Labs Login page...");
         LoginPage page = LoginPage.visitPage(driver);
@@ -69,7 +73,7 @@ public class CompleteOrder extends TestBase {
 
         this.annotate("Verify Cart Page...");
         AssertJUnit.assertTrue(cart.verifyBackpackinCart().contains("Sauce Labs Backpack"));
-       // Assert.assertTrue(cart.verifyBackpackinCart().contains("Sauce Labs Backpack"));
+        // Assert.assertTrue(cart.verifyBackpackinCart().contains("Sauce Labs Backpack"));
 
         this.annotate("Go to Checkout...");
         CheckoutPage checkoutPage = cart.checkout();
@@ -94,12 +98,14 @@ public class CompleteOrder extends TestBase {
 
         this.annotate("Verify Total...");
         AssertJUnit.assertTrue(overviewPage.verifyTotal().contains("$140.34"));
+        js.executeScript("/*@visual.snapshot*/", "verify totals");
 
         this.annotate("Continue to Order Confirmation Page...");
         OrderConfirmationPage confirmationPage = overviewPage.clickFinish();
 
         this.annotate("Verify Final Order Confirmation Page...");
         AssertJUnit.assertTrue(confirmationPage.verfiyOrderConfirmationPage());
+        js.executeScript("/*@visual.snapshot*/", "verify completed order");
 
         this.annotate("Verify Thank you message...");
         AssertJUnit.assertTrue(confirmationPage.verifyThankyouMessage().contains("THANK YOU FOR YOUR ORDER"));

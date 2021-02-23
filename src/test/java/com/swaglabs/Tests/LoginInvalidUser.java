@@ -1,5 +1,6 @@
 package com.swaglabs.Tests;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.InvalidElementStateException;
@@ -29,6 +30,8 @@ public class LoginInvalidUser extends TestBase {
         //create webdriver session
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("/*@visual.init*/", "LoginInvalidUser");
 
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   	    // driver.manage().window().maximize();
@@ -41,6 +44,7 @@ public class LoginInvalidUser extends TestBase {
 
         this.annotate("Verify Invalid User Message...");
         AssertJUnit.assertTrue(page.verifyLockedOutMessage().contains("do not match"));
+        js.executeScript("/*@visual.snapshot*/", "verify locked out user");
 
     }
 

@@ -1,5 +1,6 @@
 package com.swaglabs.Tests;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.InvalidElementStateException;
@@ -32,9 +33,11 @@ public class ValidateOrderTotals extends TestBase {
         //create webdriver session
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("/*@visual.init*/", "ValidateOrderTotals");
 
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-  	    // driver.manage().window().maximize();
+        // driver.manage().window().maximize();
 
         this.annotate("Visiting Swag Labs Login page...");
         LoginPage page = LoginPage.visitPage(driver);
@@ -68,7 +71,7 @@ public class ValidateOrderTotals extends TestBase {
 
         this.annotate("Verify Cart Page...");
         AssertJUnit.assertTrue(cart.verifyBackpackinCart().contains("Sauce Labs Backpack"));
-       // Assert.assertTrue(cart.verifyBackpackinCart().contains("Sauce Labs Backpack"));
+        // Assert.assertTrue(cart.verifyBackpackinCart().contains("Sauce Labs Backpack"));
 
         this.annotate("Go to Checkout...");
         CheckoutPage checkoutPage = cart.checkout();
@@ -78,6 +81,7 @@ public class ValidateOrderTotals extends TestBase {
 
         this.annotate("Enter User details...");
         checkoutPage.enterUserDetails("Tom", "Jones", "12345");
+        js.executeScript("/*@visual.snapshot*/", "verify user details");
 
         this.annotate("Continue to Checkout Overview Page...");
         CheckoutOverviewPage overviewPage = checkoutPage.clickContinue();
@@ -93,6 +97,7 @@ public class ValidateOrderTotals extends TestBase {
 
         this.annotate("Verify Total...");
         AssertJUnit.assertTrue(overviewPage.verifyTotal().contains("$140.34"));
+        js.executeScript("/*@visual.snapshot*/", "verify successful calculations");
 
     }
 

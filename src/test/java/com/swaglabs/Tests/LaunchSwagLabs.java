@@ -30,6 +30,8 @@ public class LaunchSwagLabs extends TestBase {
         //create webdriver session
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("/*@visual.init*/", "LaunchSwabLabs");
 
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   	    // driver.manage().window().maximize();
@@ -39,11 +41,9 @@ public class LaunchSwagLabs extends TestBase {
         //Assert.assertTrue(page.verifyLoginPage().contains("LOGIN"));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("/*@visual.init*/", "LaunchSwabLabs");
-        js.executeScript("/*@visual.snapshot*/", "Home");
-        AssertJUnit.assertTrue(page.verifyLoginPage());
 
+        AssertJUnit.assertTrue(page.verifyLoginPage());
+        js.executeScript("/*@visual.snapshot*/", "verify home");
     }
 
 }
