@@ -176,6 +176,8 @@ public class TestBase {
         sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
         sauceVisual.setCapability("projectName", "my-project-largeScreen");
         sauceVisual.setCapability("viewportSize", "1920x1080");
+        sauceVisual.setCapability("branch", "swaglabs/master");
+        sauceVisual.setCapability("baseBranch", "swaglabs/master");
 
         capabilities.setCapability("sauce:visual", sauceVisual);
 
