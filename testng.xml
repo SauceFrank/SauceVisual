@@ -4,7 +4,7 @@
   <test thread-count="8" name="Test" parallel="classes">
 <!--  <test name="Test">-->
     <classes>
-      <class name="com.swaglabs.Tests.LoginInvalidUser"/>
+<!--      <class name="com.swaglabs.Tests.LoginInvalidUser"/>-->
       <class name="com.swaglabs.Tests.LaunchSwagLabs"/>
       <class name="com.swaglabs.Tests.LoginLockedOutUser"/>
       <class name="com.swaglabs.Tests.AddToCartSingleItem"/>

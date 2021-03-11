@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.html5.Location;
 import org.openqa.selenium.html5.LocationContext;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.InvalidElementStateException;
@@ -53,6 +54,10 @@ public class LoginValidUser extends TestBase {
         this.annotate("View Product Inventory...");
         AssertJUnit.assertTrue(inventory.viewInventory().contains("Products"));
         js.executeScript("/*@visual.snapshot*/", "verify successful login");
+
+//        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
+//        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
+
     }
 //    }
 

@@ -1,6 +1,7 @@
 package com.swaglabs.Tests;
 
 import org.json.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.lang.*;
 import java.rmi.UnexpectedException;
+import java.util.Map;
 
 
 /**
@@ -62,10 +64,12 @@ public class TestBase {
         return new Object[][]{
 
             new Object[]{"firefox", "latest", "Windows 10"},
+            new Object[]{"firefox", "latest", "Windows 7"},
 //            new Object[]{"firefox", "latest-1", "Windows 10"},
 //            new Object[]{"firefox", "latest-2", "Windows 10"},
 
             new Object[]{"chrome", "latest", "Windows 10"},
+            new Object[]{"chrome", "latest", "Windows 7"},
 //            new Object[]{"chrome", "latest-1", "Windows 10"},
 //            new Object[]{"chrome", "latest-2", "Windows 10"},
 
@@ -172,14 +176,15 @@ public class TestBase {
         capabilities.setCapability(CapabilityType.PLATFORM_NAME, os);
 
 
-        MutableCapabilities sauceVisual = new MutableCapabilities();
-        sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
-        sauceVisual.setCapability("projectName", "my-project-largeScreen");
-        sauceVisual.setCapability("viewportSize", "1920x1080");
-        sauceVisual.setCapability("branch", "swaglabs/master");
-        sauceVisual.setCapability("baseBranch", "swaglabs/master");
+            MutableCapabilities sauceVisual = new MutableCapabilities();
+            sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
+            sauceVisual.setCapability("projectName", "SwagLabs");
+            sauceVisual.setCapability("viewportSize", "1920x1080");
+    //        sauceVisual.setCapability("viewportSize", "1024x768"); // You can test multiple viewport sizes at the same time
+            sauceVisual.setCapability("branch", "swaglabs/updateCopyrightYear");
+            sauceVisual.setCapability("baseBranch", "swaglabs/master");
 
-        capabilities.setCapability("sauce:visual", sauceVisual);
+            capabilities.setCapability("sauce:visual", sauceVisual);
 
         MutableCapabilities sauce = new MutableCapabilities();
         sauce.setCapability("username", username);
@@ -206,8 +211,8 @@ public class TestBase {
 
         // Launch remote browser and set it as the current thread
         webDriver.set(new RemoteWebDriver(
-//                        new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
-                        new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
+                        new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
+//                        new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
                         capabilities)
         );
 

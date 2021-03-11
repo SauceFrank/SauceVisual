@@ -1,10 +1,9 @@
 package com.swaglabs.Tests;
 
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
-import org.openqa.selenium.InvalidElementStateException;
-import org.openqa.selenium.WebDriver;
 import com.swaglabs.Pages.CartPage;
 import com.swaglabs.Pages.CheckoutOverviewPage;
 import com.swaglabs.Pages.CheckoutPage;
@@ -35,9 +34,6 @@ public class ValidateOrderTotals extends TestBase {
         WebDriver driver = this.getWebDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("/*@visual.init*/", "ValidateOrderTotals");
-
-        // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        // driver.manage().window().maximize();
 
         this.annotate("Visiting Swag Labs Login page...");
         LoginPage page = LoginPage.visitPage(driver);
@@ -71,7 +67,6 @@ public class ValidateOrderTotals extends TestBase {
 
         this.annotate("Verify Cart Page...");
         AssertJUnit.assertTrue(cart.verifyBackpackinCart().contains("Sauce Labs Backpack"));
-        // Assert.assertTrue(cart.verifyBackpackinCart().contains("Sauce Labs Backpack"));
 
         this.annotate("Go to Checkout...");
         CheckoutPage checkoutPage = cart.checkout();
