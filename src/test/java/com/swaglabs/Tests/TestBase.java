@@ -63,15 +63,15 @@ public class TestBase {
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
 
-            new Object[]{"firefox", "latest", "Windows 10"},
-            new Object[]{"firefox", "latest", "Windows 7"},
+//            new Object[]{"firefox", "latest", "Windows 10"},
+//            new Object[]{"firefox", "latest", "Windows 7"},
 //            new Object[]{"firefox", "latest-1", "Windows 10"},
 //            new Object[]{"firefox", "latest-2", "Windows 10"},
 
             new Object[]{"chrome", "latest", "Windows 10"},
             new Object[]{"chrome", "latest", "Windows 7"},
-//            new Object[]{"chrome", "latest-1", "Windows 10"},
-//            new Object[]{"chrome", "latest-2", "Windows 10"},
+            new Object[]{"chrome", "latest-1", "Windows 10"},
+            new Object[]{"chrome", "latest-2", "Windows 10"},
 
 //            new Object[]{"MicrosoftEdge", "latest", "Windows 10"},
 //            new Object[]{"MicrosoftEdge", "latest-1", "Windows 10"},
@@ -189,7 +189,7 @@ public class TestBase {
         MutableCapabilities sauce = new MutableCapabilities();
         sauce.setCapability("username", username);
         sauce.setCapability("accessKey", accesskey);
-        sauce.setCapability("name", methodName + " password logging disabled");
+        sauce.setCapability("name", methodName + " password logging enabled");
 //        sauce.setCapability("extendedDebugging",true);
 //        sauce.setCapability("capturePerformance",true);
 
@@ -211,8 +211,8 @@ public class TestBase {
 
         // Launch remote browser and set it as the current thread
         webDriver.set(new RemoteWebDriver(
-                        new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
-//                        new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
+//                        new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
+                        new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
                         capabilities)
         );
 

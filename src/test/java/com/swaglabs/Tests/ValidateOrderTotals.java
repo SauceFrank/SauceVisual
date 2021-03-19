@@ -40,6 +40,7 @@ public class ValidateOrderTotals extends TestBase {
 
         this.annotate("Greet Sign In To Swag Labs Page...");
         InventoryPage inventory = page.enterCredentials("performance_glitch_user", "secret_sauce");
+//        InventoryPage inventory = page.enterCredentials("standard_user", "secret_sauce");
 
         this.annotate("View Product Inventory...");
         AssertJUnit.assertTrue(inventory.viewInventory().contains("Products"));

@@ -5,7 +5,7 @@
 <!--  <test name="Test">-->
     <classes>
 <!--      <class name="com.swaglabs.Tests.LoginInvalidUser"/>-->
-      <class name="com.swaglabs.Tests.LaunchSwagLabs"/>
+<!--      <class name="com.swaglabs.Tests.LaunchSwagLabs"/>-->
       <class name="com.swaglabs.Tests.LoginLockedOutUser"/>
       <class name="com.swaglabs.Tests.AddToCartSingleItem"/>
       <class name="com.swaglabs.Tests.LoginLogoutStandardUser"/>

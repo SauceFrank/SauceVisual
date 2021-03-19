@@ -44,6 +44,7 @@ public class LoginLogoutStandardUser extends TestBase {
         this.annotate("Disabling Logging to hide plaintext credentials...");
         this.stopLog();
         InventoryPage inventory = page.enterCredentials("performance_glitch_user", "secret_sauce");
+//        InventoryPage inventory = page.enterCredentials("standard_user", "secret_sauce");
         this.startLog();
         this.annotate("Enabling Logging after passing credentials...");
 

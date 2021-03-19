@@ -42,6 +42,7 @@ public class AddToCartSingleItem extends TestBase {
 
         this.annotate("Greet Sign In To Swag Labs Page...");
         InventoryPage inventoryPage = loginPage.enterCredentials("performance_glitch_user", "secret_sauce");
+//        InventoryPage inventoryPage = loginPage.enterCredentials("standard_user", "secret_sauce");
 
         this.annotate("View Product Inventory...");
         AssertJUnit.assertTrue(inventoryPage.viewInventory().contains("Products"));
