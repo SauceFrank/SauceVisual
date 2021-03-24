@@ -176,7 +176,7 @@ public class TestBase {
 
         // set desired capabilities to launch appropriate browser on Sauce
         capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
-        capabilities.setCapability(CapabilityType.VERSION, version);
+        capabilities.setCapability(CapabilityType.BROWSER_VERSION, version);
         capabilities.setCapability(CapabilityType.PLATFORM_NAME, os);
 
 
@@ -234,8 +234,8 @@ public class TestBase {
 
         // Launch remote browser and set it as the current thread
         webDriver.set(new RemoteWebDriver(
-                        new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
-//                        new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
+//                        new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
+                        new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
                         capabilities)
         );
 
