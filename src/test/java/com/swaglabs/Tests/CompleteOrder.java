@@ -74,7 +74,6 @@ public class CompleteOrder extends TestBase {
 
         this.annotate("Verify Cart Page...");
         AssertJUnit.assertTrue(cart.verifyBackpackinCart().contains("Sauce Labs Backpack"));
-        // Assert.assertTrue(cart.verifyBackpackinCart().contains("Sauce Labs Backpack"));
 
         this.annotate("Go to Checkout...");
         CheckoutPage checkoutPage = cart.checkout();

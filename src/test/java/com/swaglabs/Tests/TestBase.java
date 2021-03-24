@@ -1,6 +1,7 @@
 package com.swaglabs.Tests;
 
 import org.json.JSONObject;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.openqa.selenium.JavascriptExecutor;
@@ -20,6 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.lang.*;
 import java.rmi.UnexpectedException;
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -69,9 +71,11 @@ public class TestBase {
 //            new Object[]{"firefox", "latest-2", "Windows 10"},
 
             new Object[]{"chrome", "latest", "Windows 10"},
-            new Object[]{"chrome", "latest", "Windows 7"},
             new Object[]{"chrome", "latest-1", "Windows 10"},
             new Object[]{"chrome", "latest-2", "Windows 10"},
+
+            new Object[]{"chrome", "latest", "Windows 7"},
+
 
 //            new Object[]{"MicrosoftEdge", "latest", "Windows 10"},
 //            new Object[]{"MicrosoftEdge", "latest-1", "Windows 10"},
@@ -180,16 +184,35 @@ public class TestBase {
             sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
             sauceVisual.setCapability("projectName", "SwagLabs");
             sauceVisual.setCapability("viewportSize", "1920x1080");
-    //        sauceVisual.setCapability("viewportSize", "1024x768"); // You can test multiple viewport sizes at the same time
-            sauceVisual.setCapability("branch", "swaglabs/updateCopyrightYear");
+//            sauceVisual.setCapability("viewportSize", "640x360");
+//            sauceVisual.setCapability("viewportSize", "1024x768"); // You can test multiple viewport sizes at the same time
+            sauceVisual.setCapability("branch", "swaglabs/fullSuite");
             sauceVisual.setCapability("baseBranch", "swaglabs/master");
 
-            capabilities.setCapability("sauce:visual", sauceVisual);
+        capabilities.setCapability("sauce:visual", sauceVisual);
+
+//        Map<String, Object> deviceMetrics = new HashMap<>();
+//        deviceMetrics.put("width", 360);
+//        deviceMetrics.put("height", 640);
+//        deviceMetrics.put("pixelRatio", 3.0);
+//
+//        Map<String, Object> mobileEmulation = new HashMap<>();
+//        mobileEmulation.put("deviceMetrics", deviceMetrics);
+//        mobileEmulation.put("userAgent", "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19");
+//
+//        ChromeOptions chromeOptions = new ChromeOptions();
+//        chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
 
         MutableCapabilities sauce = new MutableCapabilities();
         sauce.setCapability("username", username);
         sauce.setCapability("accessKey", accesskey);
         sauce.setCapability("name", methodName + " password logging enabled");
+//        sauce.setCapability(CapabilityType.BROWSER_NAME, browser);
+//        sauce.setCapability(CapabilityType.VERSION, version);
+//        sauce.setCapability(CapabilityType.PLATFORM_NAME, os);
+
+
+//        sauce.setCapability("chromeOptions", chromeOptions);
 //        sauce.setCapability("extendedDebugging",true);
 //        sauce.setCapability("capturePerformance",true);
 
@@ -211,8 +234,8 @@ public class TestBase {
 
         // Launch remote browser and set it as the current thread
         webDriver.set(new RemoteWebDriver(
-//                        new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
-                        new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
+                        new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
+//                        new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
                         capabilities)
         );
 
