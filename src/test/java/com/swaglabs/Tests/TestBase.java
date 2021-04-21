@@ -180,14 +180,22 @@ public class TestBase {
         capabilities.setCapability(CapabilityType.PLATFORM_NAME, os);
 
 
+//        capabilities.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
+//        capabilities.setCapability("projectName", "Atlassian");
+//        capabilities.setCapability("viewportSize", "1920x1080");
+//        capabilities.setCapability("username", username);
+//        capabilities.setCapability("accessKey", accesskey);
+//        capabilities.setCapability("name", methodName + " password logging enabled");
+//        capabilities.setCapability("build", buildTag);
+
             MutableCapabilities sauceVisual = new MutableCapabilities();
             sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
-            sauceVisual.setCapability("projectName", "SwagLabs");
+            sauceVisual.setCapability("projectName", "newestProject");
             sauceVisual.setCapability("viewportSize", "1920x1080");
 //            sauceVisual.setCapability("viewportSize", "640x360");
 //            sauceVisual.setCapability("viewportSize", "1024x768"); // You can test multiple viewport sizes at the same time
-            sauceVisual.setCapability("branch", "swaglabs/fullSuite");
-            sauceVisual.setCapability("baseBranch", "swaglabs/master");
+//            sauceVisual.setCapability("branch", "swaglabs/loginValidUser");
+            sauceVisual.setCapability("baseBranch", "project/master");
 
         capabilities.setCapability("sauce:visual", sauceVisual);
 
@@ -199,24 +207,27 @@ public class TestBase {
 //        Map<String, Object> mobileEmulation = new HashMap<>();
 //        mobileEmulation.put("deviceMetrics", deviceMetrics);
 //        mobileEmulation.put("userAgent", "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19");
-//
+
+
 //        ChromeOptions chromeOptions = new ChromeOptions();
+//        chromeOptions.addArguments("--use-fake-device-for-media-stream");
+//        chromeOptions.addArguments("--use-fake-ui-for-media-stream");
+//        chromeOptions.addArguments("--use-fake-codec-for-peer-connection");
+//        chromeOptions.addArguments("--use-fake-mjpeg-decode-accelerator");
 //        chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
 
         MutableCapabilities sauce = new MutableCapabilities();
         sauce.setCapability("username", username);
         sauce.setCapability("accessKey", accesskey);
         sauce.setCapability("name", methodName + " password logging enabled");
-//        sauce.setCapability(CapabilityType.BROWSER_NAME, browser);
-//        sauce.setCapability(CapabilityType.VERSION, version);
-//        sauce.setCapability(CapabilityType.PLATFORM_NAME, os);
 
 
 //        sauce.setCapability("chromeOptions", chromeOptions);
 //        sauce.setCapability("extendedDebugging",true);
 //        sauce.setCapability("capturePerformance",true);
-
-        sauce.setCapability("commandTimeout", 600);
+//
+//        sauce.setCapability("commandTimeout", 600);
+//        sauce.setCapability("tunnelIdentifier", "visualtesting");
 
         //Getting the build name.
         // Using the Jenkins ENV var or Github Action ENV var. You can use your own. If it is not set test will run without a build id.

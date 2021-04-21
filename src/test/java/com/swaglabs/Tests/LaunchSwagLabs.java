@@ -2,12 +2,14 @@ package com.swaglabs.Tests;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import com.swaglabs.Pages.LoginPage;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.rmi.UnexpectedException;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -41,12 +43,15 @@ public class LaunchSwagLabs extends TestBase {
         //Assert.assertTrue(page.verifyLoginPage().contains("LOGIN"));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        Actions actions = new Actions(driver);
-        WebElement elementLocator1 = driver.findElement(By.cssSelector("#login_credentials > h4"));
-        actions.doubleClick(elementLocator1).perform();
+//        Actions actions = new Actions(driver);
+//        WebElement elementLocator1 = driver.findElement(By.cssSelector("#login_credentials > h4"));
+//        actions.doubleClick(elementLocator1).perform();
 
         AssertJUnit.assertTrue(page.verifyLoginPage());
         js.executeScript("/*@visual.snapshot*/", "verify home");
+
+//        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
+//        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
     }
 
 }

@@ -8,28 +8,28 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class InventoryPage {
 
-    @FindBy(className = "product_label")
+    @FindBy(css = "#inventory_container")
     private WebElement productInventory;  
 
-    @FindBy(css = "#inventory_container > div > div:nth-child(1) > div.pricebar > button")
+    @FindBy(css = "#add-to-cart-sauce-labs-backpack")
     private WebElement addToCartBackpackButton;
     
-    @FindBy(css = "#inventory_container > div > div:nth-child(3) > div.pricebar > button")
+    @FindBy(css = "#add-to-cart-sauce-labs-bolt-t-shirt")
     private WebElement addToCartBoltTshirtButton;  
     
-    @FindBy(css = "#inventory_container > div > div:nth-child(5) > div.pricebar > button")
+    @FindBy(css = "#add-to-cart-sauce-labs-onesie")
     private WebElement addToCartOnesieButton;  
     
-    @FindBy(xpath = "//div//div[@class='inventory_list']//div[6]//div[3]//button[1]")
+    @FindBy(css = "#add-to-cart-test\\.allthethings\\(\\)-t-shirt-\\(red\\)")
     private WebElement addToCartTshirtRedButton;
     
-    @FindBy(css = "#inventory_container > div > div:nth-child(4) > div.pricebar > button")
+    @FindBy(css = "#add-to-cart-sauce-labs-fleece-jacket")
     private WebElement addToCartFleeceJacketButton;
     
-    @FindBy(xpath = "//div//div[@class='inventory_list']//div[2]//div[3]//button[1]")
+    @FindBy(css = "#add-to-cart-sauce-labs-bike-light")
     private WebElement addToCartBikeLightButton;
     
-    @FindBy(xpath = "//*[contains(@class,'svg-inline--fa fa-shopping-cart fa-w-18 fa-3x')]")
+    @FindBy(css = "#shopping_cart_container > a")
 //    @FindBy(css = "#shopping_cart_container > a > svg > path")
     private WebElement cartIcon;
     

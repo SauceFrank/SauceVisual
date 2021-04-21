@@ -18,7 +18,7 @@ public class LoginPage {
     @FindBy(xpath = "//input[@id='password']")
     private WebElement passwordTextBox;
 
-    @FindBy(xpath = "//input[@class='btn_action']")
+    @FindBy(css = "#login-button")
     private WebElement loginButton;
 
     @FindBy(xpath = "//h3[@data-test='error']")
@@ -31,6 +31,8 @@ public class LoginPage {
     public WebDriver driver;
     public static String url = "https://www.saucedemo.com/";
 //    public static String url = "https://swaglabs.herokuapp.com/";
+//    public static String url = "https://www.ea.com/";
+//    public static String url = "https://www.atlassian.com/software/jira/core/pricing";
 
     public static LoginPage visitPage(WebDriver driver) {
     	LoginPage page = new LoginPage(driver);

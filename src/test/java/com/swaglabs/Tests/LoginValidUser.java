@@ -46,6 +46,8 @@ public class LoginValidUser extends TestBase {
 
         this.annotate("Greet Sign In To Swag Labs Page...");
 
+        js.executeScript("/*@visual.snapshot*/", "LoadPage");
+
         this.annotate("Disable log to hide text password");
         this.stopLog();
         InventoryPage inventory = page.enterCredentials("performance_glitch_user", "secret_sauce");
@@ -56,28 +58,28 @@ public class LoginValidUser extends TestBase {
         this.annotate("View Product Inventory...");
         AssertJUnit.assertTrue(inventory.viewInventory().contains("Products"));
 
-        this.annotate("Who likes Friends?");
         // Demo purposes only change all images to Joey from Friends
-        js.executeScript("document.querySelectorAll('.inventory_item_img').forEach(function (item) {item.src = 'https://i.pinimg.com/736x/46/91/c9/4691c9ec1ec3343a33aa1f8cca1915bb.jpg'})");
-        Thread.sleep(1000);
+//        this.annotate("Who likes Friends?");
+//        js.executeScript("document.querySelectorAll('.inventory_item_img').forEach(function (item) {item.src = 'https://i.pinimg.com/736x/46/91/c9/4691c9ec1ec3343a33aa1f8cca1915bb.jpg'})");
+//        Thread.sleep(1000);
 
-        this.annotate("Randomly remove various Item Names");
         //randomly remove various Item Names
-        js.executeScript("var items = document.querySelectorAll('.inventory_item_name')\n" +
-                        "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'\n" +
-                        "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'\n" +
-                        "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'");
-        Thread.sleep(1000);
+//        this.annotate("Randomly remove various Item Names");
+//        js.executeScript("var items = document.querySelectorAll('.inventory_item_name')\n" +
+//                        "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'\n" +
+//                        "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'\n" +
+//                        "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'");
+//        Thread.sleep(1000);
 
-        this.annotate("Randomly change the height of an Item Name");
         //randomly change the height of an Item Name
-        js.executeScript("var items = document.querySelectorAll('.inventory_item_name')\n" +
-                "items[Math.floor(Math.random() * 5)].style.height = '400px'");
-        Thread.sleep(1000);
+//        this.annotate("Randomly change the height of an Item Name");
+//        js.executeScript("var items = document.querySelectorAll('.inventory_item_name')\n" +
+//                "items[Math.floor(Math.random() * 5)].style.height = '400px'");
+//        Thread.sleep(1000);
 
-        this.annotate("Disable css scripts");
         //disable css
-        js.executeScript("for (var i = 0; i < document.styleSheets.length; i++) \n{     document.styleSheets[i].disabled = true;\n}");
+//        this.annotate("Disable css scripts");
+//        js.executeScript("for (var i = 0; i < document.styleSheets.length; i++) \n{     document.styleSheets[i].disabled = true;\n}");
 
         this.annotate("sleeping for a few seconds so humans can see the changes");
         Thread.sleep(5000);
@@ -85,8 +87,8 @@ public class LoginValidUser extends TestBase {
 //        WebDriverWait wait = new WebDriverWait(driver, 10);
 //        driver.wait(10);
 
-//        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
-//        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
+        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
+        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
 
     }
 //    }
