@@ -56,7 +56,7 @@ public class LoginValidUser extends TestBase {
         this.annotate("Enable log to after text password");
 
         this.annotate("View Product Inventory...");
-        AssertJUnit.assertTrue(inventory.viewInventory().contains("Products"));
+        AssertJUnit.assertTrue(inventory.viewInventory().contains("sleek"));
 
         // Demo purposes only change all images to Joey from Friends
 //        this.annotate("Who likes Friends?");
