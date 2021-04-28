@@ -88,6 +88,7 @@ public class TestBase {
 
 
                 // Mac OS
+            new Object[]{"safari", "14", "macOS 11.00"},
 //            new Object[]{"safari", "latest", "macOS 10.15"},
 //            new Object[]{"safari", "13.0", "macOS 10.15"},
 //            new Object[]{"safari", "latest-2", "macOS 10.11"},
@@ -192,9 +193,9 @@ public class TestBase {
             sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
             sauceVisual.setCapability("projectName", "newestProject");
             sauceVisual.setCapability("viewportSize", "1920x1080");
-//            sauceVisual.setCapability("viewportSize", "640x360");
-//            sauceVisual.setCapability("viewportSize", "1024x768"); // You can test multiple viewport sizes at the same time
-//            sauceVisual.setCapability("branch", "swaglabs/loginValidUser");
+            sauceVisual.setCapability("viewportSize", "640x360");
+            sauceVisual.setCapability("viewportSize", "1024x768"); // You can test multiple viewport sizes at the same time
+            sauceVisual.setCapability("branch", "swaglabs/loginValidUser");
             sauceVisual.setCapability("baseBranch", "project/master");
 
         capabilities.setCapability("sauce:visual", sauceVisual);
