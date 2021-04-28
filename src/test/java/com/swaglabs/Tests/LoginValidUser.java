@@ -58,28 +58,37 @@ public class LoginValidUser extends TestBase {
         this.annotate("View Product Inventory...");
         AssertJUnit.assertTrue(inventory.viewInventory().contains("sleek"));
 
-        // Demo purposes only change all images to Joey from Friends
-//        this.annotate("Who likes Friends?");
-//        js.executeScript("document.querySelectorAll('.inventory_item_img').forEach(function (item) {item.src = 'https://i.pinimg.com/736x/46/91/c9/4691c9ec1ec3343a33aa1f8cca1915bb.jpg'})");
-//        Thread.sleep(1000);
+        //*^~*^~*^~*~*^~*
+        //Start JS section to mess with the page for demos
+        //*^~*^~*^~*~*^~*
+        /* //remove this and the end comment block around line 87 for diffs
+        //Demo purposes only change all images to Joey from Friends
+        this.annotate("Who likes Friends?");
+        js.executeScript("document.querySelectorAll('.inventory_item_img').forEach(function (item) {item.src = 'https://i.pinimg.com/736x/46/91/c9/4691c9ec1ec3343a33aa1f8cca1915bb.jpg'})");
+        Thread.sleep(1000);
 
         //randomly remove various Item Names
-//        this.annotate("Randomly remove various Item Names");
-//        js.executeScript("var items = document.querySelectorAll('.inventory_item_name')\n" +
-//                        "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'\n" +
-//                        "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'\n" +
-//                        "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'");
-//        Thread.sleep(1000);
+        this.annotate("Randomly remove various Item Names");
+        js.executeScript("var items = document.querySelectorAll('.inventory_item_name')\n" +
+                        "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'\n" +
+                        "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'\n" +
+                        "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'");
+        Thread.sleep(1000);
 
         //randomly change the height of an Item Name
-//        this.annotate("Randomly change the height of an Item Name");
-//        js.executeScript("var items = document.querySelectorAll('.inventory_item_name')\n" +
-//                "items[Math.floor(Math.random() * 5)].style.height = '400px'");
-//        Thread.sleep(1000);
+        this.annotate("Randomly change the height of an Item Name");
+        js.executeScript("var items = document.querySelectorAll('.inventory_item_name')\n" +
+                "items[Math.floor(Math.random() * 5)].style.height = '400px'");
+        Thread.sleep(1000);
 
         //disable css
-//        this.annotate("Disable css scripts");
-//        js.executeScript("for (var i = 0; i < document.styleSheets.length; i++) \n{     document.styleSheets[i].disabled = true;\n}");
+        this.annotate("Disable css scripts");
+        js.executeScript("for (var i = 0; i < document.styleSheets.length; i++) \n{     document.styleSheets[i].disabled = true;\n}");
+        */
+        //*^~*^~*^~*~*^~*
+        //END JS section to mess with the page for demos
+        //*^~*^~*^~*~*^~*
+
 
         this.annotate("sleeping for a few seconds so humans can see the changes");
         Thread.sleep(5000);
