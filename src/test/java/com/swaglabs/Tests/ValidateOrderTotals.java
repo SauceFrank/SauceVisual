@@ -43,7 +43,7 @@ public class ValidateOrderTotals extends TestBase {
 //        InventoryPage inventory = page.enterCredentials("standard_user", "secret_sauce");
 
         this.annotate("View Product Inventory...");
-        AssertJUnit.assertTrue(inventory.viewInventory().contains("Products"));
+        AssertJUnit.assertTrue(inventory.viewInventory().contains("Products")); // 1 Assert
 
         this.annotate("Add To Cart Backpack...");
         inventory.clickAddToCartBackpack();
@@ -67,33 +67,33 @@ public class ValidateOrderTotals extends TestBase {
         CartPage cart = inventory.goToCart();
 
         this.annotate("Verify Cart Page...");
-        AssertJUnit.assertTrue(cart.verifyBackpackinCart().contains("Sauce Labs Backpack"));
+        AssertJUnit.assertTrue(cart.verifyBackpackinCart().contains("Sauce Labs Backpack")); // 2 Asserts
 
         this.annotate("Go to Checkout...");
         CheckoutPage checkoutPage = cart.checkout();
 
         this.annotate("Asserting that we are on Checkout page...");
-        AssertJUnit.assertTrue(checkoutPage.verfiyCheckoutPage());
+        AssertJUnit.assertTrue(checkoutPage.verfiyCheckoutPage()); // 3 Asserts
 
         this.annotate("Enter User details...");
         checkoutPage.enterUserDetails("Tom", "Jones", "12345");
-        js.executeScript("/*@visual.snapshot*/", "verify user details");
+        js.executeScript("/*@visual.snapshot*/", "verify user details"); //saves three asserts
 
         this.annotate("Continue to Checkout Overview Page...");
         CheckoutOverviewPage overviewPage = checkoutPage.clickContinue();
 
         this.annotate("Verify Checkout Overview Page...");
-        AssertJUnit.assertTrue(overviewPage.verfiyCheckoutOverviewPage());
+        AssertJUnit.assertTrue(overviewPage.verfiyCheckoutOverviewPage()); // 1 Assert
 
         this.annotate("Verify Item total...");
-        AssertJUnit.assertTrue(overviewPage.verifyItemTotal().contains("$129.94"));
+        AssertJUnit.assertTrue(overviewPage.verifyItemTotal().contains("$129.94")); // 2 Asserts
 
         this.annotate("Verify Tax...");
-        AssertJUnit.assertTrue(overviewPage.verifyTax().contains("$10.40"));
+        AssertJUnit.assertTrue(overviewPage.verifyTax().contains("$10.40")); // 3 Asserts
 
         this.annotate("Verify Total...");
-        AssertJUnit.assertTrue(overviewPage.verifyTotal().contains("$140.34"));
-        js.executeScript("/*@visual.snapshot*/", "verify successful calculations");
+        AssertJUnit.assertTrue(overviewPage.verifyTotal().contains("$140.34")); // 4 Asserts
+        js.executeScript("/*@visual.snapshot*/", "verify successful calculations"); //saves four asserts
 
     }
 
